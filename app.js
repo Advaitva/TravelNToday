@@ -43,7 +43,7 @@ let placeSchema=mongoose.Schema({
 })
 cities=[
       {
-        name:"goa",
+       
         beach:'op1',
         hiking:'op2',
         history:'op1',
@@ -55,10 +55,11 @@ cities=[
         luxury:'op1',
         room_service:'op1',
         view:'op1',
+        name:"goa"
       },
 
       {
-        name: "srinagar",
+       
         beach: "op2",
         hiking: "op1",
         history: "op1",
@@ -69,10 +70,11 @@ cities=[
         surprise: "op1",
         luxury: "op1",
         room_service: "op1",
-        view: "op1"
+        view: "op1",
+        name: "srinagar"
       },
       {
-        name:"rajasthan",
+        
         beach:'op2',
         hiking:'op2',
        history:'op1',
@@ -84,9 +86,10 @@ cities=[
        luxury:'op1',
        room_service:'op1',
        view:'op1',
+       name:"rajasthan"
        },
       {
-        name:"srinagar",
+        
         beach:'op2',
         hiking:'op1',
        history:'op1',
@@ -98,6 +101,7 @@ cities=[
        luxury:'op1',
        room_service:'op2',
        view:'op1',
+       name:"srinagar"
        }
 ];
 var n=3;
@@ -170,16 +174,15 @@ app.post('/responses',(req,res)=>{
         view:req.body.view
         
     };
-    place.find({name:'goa'},(err,resp)=>{
-        console.log(resp);
-    });
+    console.log(responses);
     
     place.find(responses,(err,response)=>{
         if(err)
         console.log('Error has occured in finding place.');
         else{
-            placeSuggest=response.name;
-            // console.log(response+"Objectblah");
+            placeSuggest=response[0].name;
+            console.log(response+"Object blah");
+            console.log(placeSuggest)
             res.redirect('/suggestion');
         }
         // console.log("Response="+responses);
